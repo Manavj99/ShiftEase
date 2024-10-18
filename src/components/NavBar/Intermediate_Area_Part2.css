@@ -1,0 +1,29 @@
+.intermediate-area {
+  color: rgb(112, 108, 108);
+  display: inline-block;
+  position: relative;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.4rem; /* Consider using rem for better responsiveness */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.intermediate-area:hover {
+  color: rgb(0, 0, 0); /* Change color on hover for better interaction */
+}
+
+.intermediate-area:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.5px;    
+  bottom: -20px;
+  left: 0;
+  background-color: #c5bcbc;
+  transform-origin: bottom left;
+  transition: transform 0.3s ease; /* Smooth transition for the line */
+}
+
+.intermediate-area:hover:after {
+  transform: scaleX(1.1); /* Show the line on hover */
+}

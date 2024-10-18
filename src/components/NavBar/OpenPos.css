@@ -1,0 +1,9 @@
+@media only screen and (max-width: 800px) {
+    .svg-line svg { /* Corrected selector */
+        display: none; /* Hide SVG icon */
+    }
+    
+    .line-width { /* Consistent class naming */
+        width: 100%; /* Full width for line width */
+    }
+}

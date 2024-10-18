@@ -1,0 +1,89 @@
+/* Navbar.css */
+
+.TopArea {
+  background-color: #fafafa; /* Light background for the navbar */
+  padding: 3%; /* Padding around the navbar */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between; /* Space between logo and links */
+  align-items: center; /* Center items vertically */
+}
+
+.logo {
+  margin-left: 2vw; /* Space on the left */
+  font-size: 1.8rem; /* Logo font size */
+  font-weight: bold; /* Bold logo */
+}
+
+.nav-links {
+  display: flex; /* Flexbox for nav links */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.nav-link {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Default text color */
+  transition: color 0.2s, transform 0.2s; /* Smooth transitions */
+  margin-right: 2vw; /* Space between links */
+  font-weight: bold; /* Bold text */
+}
+
+.nav-link:hover {
+  color: rgb(73, 71, 71); /* Change color on hover */
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.underLine2 {
+  color: rgb(112, 108, 108); /* Default color */
+  display: inline-block; /* Inline block for underline effect */
+  position: relative; /* Position for the pseudo-element */
+}
+
+.underLine2:after {
+  content: "";
+  position: absolute; /* Positioning for the underline */
+  width: 100%; /* Full width */
+  transform: scaleX(0); /* Start hidden */
+  height: 2px; /* Height of the underline */
+  bottom: 0; /* Position at the bottom */
+  left: 0; /* Align to the left */
+  background-color: #d83838; /* Underline color */
+  transform-origin: bottom right; /* Origin for scaling */
+  transition: transform 0.25s ease-in-out; /* Smooth transition */
+}
+
+.underLine2:hover:after {
+  transform: scaleX(0.9); /* Show underline on hover */
+  transform-origin: bottom left; /* Change origin for scaling */
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-container {
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align items to the start */
+  }
+
+  .nav-links {
+      margin-top: 1rem; /* Space above links */
+      width: 100%; /* Full width for links */
+      justify-content: space-between; /* Space between links */
+  }
+
+  .nav-link {
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: 0.5rem; /* Space below links */
+  }
+
+  .hide_on_responsive {
+      display: none; /* Hide on smaller screens */
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .hide_on_responsive {
+      display: none; /* Hide on very small screens */
+  }
+}

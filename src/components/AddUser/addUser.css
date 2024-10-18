@@ -1,0 +1,50 @@
+.add-user-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+.add-user-modal .modal-content,
+.add-position-modal .modal-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-user-modal .modal-header,
+.add-position-modal .modal-header {
+  border-bottom: none;
+}
+
+.add-user-modal .modal-footer,
+.add-position-modal .modal-footer {
+  border-top: none;
+}
+
+.add-user-modal .close,
+.add-position-modal .close {
+  color: #666;
+  font-size: 24px;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.add-user-modal .close:hover,
+.add-position-modal .close:hover {
+  color: #000;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-user-modal .modal-content,
+.add-position-modal .modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}

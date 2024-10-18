@@ -1,0 +1,44 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .error-content {
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 120px;
+    margin: 0;
+    color: #e74c3c;
+  }
+  
+  h2 {
+    font-size: 32px;
+    margin: 0;
+    color: #34495e;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin: 20px 0;
+  }
+  
+  .btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9;
+  }
