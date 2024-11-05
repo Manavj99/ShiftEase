@@ -1,24 +1,69 @@
-// client/src/components/Home/StyledComponents.js
 import styled from 'styled-components';
-// client/src/components/Home/StyledComponents.js
+
+
+export const RoleSelect = styled.select`
+    margin: 10px 0;
+    font-size: 12px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+`;
+export const RoleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+`;
+
+export const RoleLabel = styled.label`
+    margin-right: 10px;
+    font-size: 14px;
+`;
+
+export const ShowPasswordButton = styled.button`
+    border-radius: 20px;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    color: #007bff;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+`;
+export const ErrorMessage = styled.div`
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+`;
 
 
 export const GoogleButton = styled.button`
-    background-color: #4285F4; /* Google Blue */
+    background-color: #4285F4;
     color: white;
     border: none;
     border-radius: 20px;
     padding: 12px 45px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 20px; /* Space below the button */
+    margin-bottom: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: #357ae8; /* Darker blue on hover */
+        background-color: #357ae8;
     }
 
     &:focus {
@@ -37,9 +82,9 @@ export const Container = styled.div`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 700px; /* Adjust as needed */
+    width: 700px;
     max-width: 100%;
-    min-height: 500px; /* Adjust as needed */
+    min-height: 550px;
 `;
 
 export const SignUpContainer = styled.div`
@@ -84,7 +129,7 @@ export const Title = styled.h1`
     font-weight: bold;
     margin: 0;
     color: #333; /* Darker text for better readability */
-    font-size: 24px; /* Decreased font size */
+    font-size: 22px; /* Increased font size by 1px */
 `;
 
 export const Input = styled.input`
@@ -93,7 +138,8 @@ export const Input = styled.input`
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
+    font-size: 12px;
 `;
 
 export const Button = styled.button`
@@ -101,7 +147,7 @@ export const Button = styled.button`
     border: 1px solid #ff4b2b;
     background-color: #ff4b2b;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     padding: 12px 45px;
     letter-spacing: 1px;
@@ -122,7 +168,7 @@ export const GhostButton = styled(Button)`
 
 export const Anchor = styled.a`
     color: #333;
-    font-size: 14px;
+    font-size: 12px;
     text-decoration: none;
     margin: 15px 0;
 `;
@@ -183,7 +229,7 @@ export const RightOverlayPanel = styled(OverlayPanel)`
 `;
 
 export const Paragraph = styled.p`
-    font-size: 12px; /* Decreased font size */
+    font-size: 10px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;

@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import AddUser from './components/AddUser/AddUser';
-import Errror from './components/Errror';  // Import the Errror component
+import Scheduler from './components/Schedule/Scheduler';
+import Dashboard from './components/DashBoard/Dashboard';
+import Errror from './components/Errror';
 import './App.css';
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/add-user" element={<AddUser />} />
-            <Route path="*" element={<Errror />} />  {/* This will catch all undefined routes */}
+            <Route path="/schedule" element={<Scheduler />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<Errror />} />
           </Routes>
         </main>
       </div>

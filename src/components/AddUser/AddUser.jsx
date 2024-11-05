@@ -2,61 +2,67 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../services/firebase';
 import Button from 'react-bootstrap/Button';
 import AddUserModal from './AddUserModal';
-import AddPositionModal from './AddPositionModal';
+import AddRoleModal from './AddRoleModal';
 import './addUser.css';
 
 function AddUser() {
-  const [userModalShow, setUserModalShow] = useState(false);
-  const [positionModalShow, setPositionModalShow] = useState(false);
-  const [positions, setPositions] = useState([]);
-  const [users, setUsers] = useState([]);
+    const [userModalShow, setUserModalShow] = useState(false);
+    const [roleModalShow, setRoleModalShow] = useState(false);
+    const [roles, setRoles] = useState([]);
+    const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const unsubscribePositions = db.collection('positions').onSnapshot((snapshot) => {
-      setPositions(snapshot.docs.map((doc) => doc.data().position));
-    });
+    useEffect(() => {
+        const unsubscribeRoles = db.collection('roles').onSnapshot((snapshot) => {
+            setRoles(snapshot.docs.map((doc) => doc.data().role));
+        });
 
-    const unsubscribeUsers = db.collection('users').onSnapshot((snapshot) => {
-      setUsers(snapshot.docs.map((doc) => doc.data()));
-    });
+        const unsubscribeUsers = db.collection('users').onSnapshot((snapshot) => {
+            setUsers(snapshot.docs.map((doc) => doc.data()));
+        });
 
-    return () => {
-      unsubscribePositions();
-      unsubscribeUsers();
+        return () => {
+            unsubscribeRoles();
+            unsubscribeUsers();
+        };
+    }, []);
+
+    const addUser = (user) => {
+        setUsers((prevUsers) => [...prevUsers, user]);
     };
-  }, []);
 
-  const addUser = (user) => {
-    setUsers((prevUsers) => [...prevUsers, user]);
-  };
+    const addRole = (role) => {
+        console.log("Role added:", role);
+    };
 
-  const addPosition = (position) => {
-    setPositions((prevPositions) => [...prevPositions, position]);
-  };
+    return (
+        <div className="add-user-container">
+            <Button variant="primary" onClick={() => setUserModalShow(true)}>
+                Create User
+            </Button>
+            <Button variant="secondary" onClick={() => setRoleModalShow(true)}>
+                Add Role
+            </Button>
 
-  return (
-    <div className="add-user-container">
-      <Button variant="primary" onClick={() => setUserModalShow(true)}>
-        Create User
-      </Button>
-      <Button variant="secondary" onClick={() => setPositionModalShow(true)}>
-        Add Position
-      </Button>
+            <ul>
+                {users.map((user, index) => (
+                    <li key={index}>{user.name}</li>
+                ))}
+            </ul>
 
-      <AddUserModal
-        show={userModalShow}
-        onHide={() => setUserModalShow(false)}
-        positions={positions}
-        addUser={addUser}
-      />
+            <AddUserModal
+                show={userModalShow}
+                onHide={() => setUserModalShow(false)}
+                roles={roles}
+                addUser={addUser}
+            />
 
-      <AddPositionModal
-        show={positionModalShow}
-        onHide={() => setPositionModalShow(false)}
-        addPosition={addPosition}
-      />
-    </div>
-  );
+            <AddRoleModal
+                show={roleModalShow}
+                onHide={() => setRoleModalShow(false)}
+                addRole={addRole}
+            />
+        </div>
+    );
 }
 
 export default AddUser;

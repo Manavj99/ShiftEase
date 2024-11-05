@@ -15,16 +15,13 @@ test('renders App component with main structure', () => {
     </BrowserRouter>
   );
   
-  // Check if Navbar is rendered
+
   expect(screen.getByTestId('mock-navbar')).toBeInTheDocument();
   
-  // Check if main content area exists
   expect(screen.getByRole('main')).toBeInTheDocument();
   
-  // Check if Dashboard is rendered (as it's the default route)
   expect(screen.getByTestId('mock-dashboard')).toBeInTheDocument();
   
-  // Check if Footer is rendered
   expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
 });
 

@@ -1,0 +1,156 @@
+.main-container {
+    padding: 20px;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card-item {
+    width: 130px;
+    height: 100px;
+    background: white;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.card-item:hover {
+    background: #f0f0f0;
+}
+
+.icon {
+    font-size: 30px;
+    color: #979797;
+    margin-bottom: 5px;
+}
+
+.card-item span {
+    font-family: 'SF Pro Display';
+    font-size: 12px;
+    font-weight: 500;
+    color: #979797;
+}
+
+.card-item.active {
+    background: #2051E5;
+    color: white;
+}
+
+.card-item.active .icon {
+    color: white;
+}
+
+.dashboard-icon {
+    background: #3a3b3b;
+}
+
+.employees-icon, .positions-icon, .locations-icon, 
+.announcements-icon, .settings-icon {
+    background: #979797;
+}
+
+.shift-status {
+    width: 880px;
+    max-width: 83%;
+    height: 70px;
+    background: #2051E5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    color: white;
+    font-family: 'SF Pro Display';
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notification-panel {
+    width: 880px;
+    max-width: 83%;
+    height: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.10);
+    padding: 20px;
+    margin-left: 0%;
+}
+
+.panel-header {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.panel-header span {
+    font-family: 'SF Pro Display';
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.active-tab {
+    color: #2051E5;
+}
+
+.inactive-tab {
+    color: #979797;
+}
+
+.blue-line {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 84px;
+    height: 5px;
+    background: #2051E5;
+}
+
+.welcome-message {
+    color: #445668;
+    font-family: 'SF Pro Display';
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Employee List Styles */
+.employee-list {
+    width: 880px;
+    max-width: 83%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-left: 0%;
+}
+
+.employee-list h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.employee-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-list th, .employee-list td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+.employee-list th {
+    background-color: #0f0f0f;
+}

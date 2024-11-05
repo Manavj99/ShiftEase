@@ -1,0 +1,98 @@
+.shift-modal .modal-dialog {
+    max-width: 500px; 
+    margin: auto; 
+    position: relative; 
+    z-index: 1050; 
+}
+
+.shift-modal .modal-header {
+    background-color: #007bff; 
+    color: white; 
+}
+
+.shift-modal .modal-title {
+    font-weight: bold; 
+}
+
+.shift-modal .modal-body {
+    padding: 20px; 
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 20px; 
+}
+
+.modal-backdrop {
+    z-index: 1040; 
+}
+
+.shift-modal .modal {
+    transition: all 0.3s ease; 
+}
+
+.scheduler-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+button {
+    margin-top: 5px;
+}
+
+.calendar {
+    width: 100%;
+    padding: 20px;
+}
+
+.view-toggle {
+    margin: 20px 0;
+}
+
+.view-toggle nav {
+    display: flex;
+    justify-content: center;
+}
+
+.view-toggle ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.view-toggle li {
+    margin: 0 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-toggle li:hover {
+    background-color: #f0f0f0;
+}
+
+.view-toggle li.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
