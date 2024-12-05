@@ -1,39 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { getAuth } from 'firebase/auth';
+import { db } from '../services/firebase'; // Import your Firestore instance
+import { doc, getDoc } from 'firebase/firestore'; // Import Firestore functions
 import "./Navbar.css";
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const location = useLocation();
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [currentUserName, setCurrentUserName] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true); // New loading state
+    const [loading, setLoading] = useState(true);
 
     const userLogout = () => {
-        localStorage.removeItem("user_login");
-        navigate("/");
+        const auth = getAuth();
+        auth.signOut().then(() => {
+            sessionStorage.removeItem('currentUserName');
+            navigate("/");
+        });
     }
 
     useEffect(() => {
         const auth = getAuth();
-        const user = auth.currentUser;
-        if (user) {
-            setCurrentUserName(user.displayName || 'User'); // Use displayName or fallback to 'User'
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
-        setLoading(false); // Set loading to false after checking user
+        const unsubscribe = auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const userId = user.uid;
+                const userDocRef = doc(db, 'users', userId); // Reference to the user's document
+                const userDocSnap = await getDoc(userDocRef); // Fetch the document
+
+                if (userDocSnap.exists()) {
+                    const userData = userDocSnap.data();
+                    const name = `${userData.firstName} ${userData.lastName}`; // Construct the full name
+                    setCurrentUserName(name);
+                    sessionStorage.setItem('currentUserName', name); // Store name in session storage
+                } else {
+                    console.error("User document does not exist.");
+                    setCurrentUserName('Guest'); // Fallback if user document is not found
+                }
+            } else {
+                const storedName = sessionStorage.getItem('currentUserName');
+                setCurrentUserName(storedName || 'Guest');
+            }
+            setLoading(false);
+        });
+
+        return () => unsubscribe(); // Cleanup subscription
     }, []);
 
-    const isAuthPage = location.pathname === '/' || location.pathname === '/signup';
-
-    // Render the navbar only if not on auth pages and loading is complete
-    if (isAuthPage || loading) {
-        return null; // Do not render the navbar if on auth pages or still loading
+    if (loading) {
+        return null; // Optionally render a loading state
     }
 
     return (
@@ -63,7 +78,7 @@ const Navbar = () => {
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
                                 aria-label={currentUserName}
                             >
-                                {currentUserName || 'User'}
+                                {currentUserName}
                             </Button>
                             {dropdownOpen && (
                                 <div className="dropdown-menu">

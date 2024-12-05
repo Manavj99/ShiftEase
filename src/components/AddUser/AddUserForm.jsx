@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { db } from '../services/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 
 function AddUserForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [studentId, setStudentId] = useState('');
     const [role, setRole] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!name || !email || !role) {
+        if (!name || !email || !role || !studentId) {
             setError("All fields are required.");
             return;
         }
@@ -24,10 +25,15 @@ function AddUserForm() {
             await setDoc(doc(db, 'users', userId), {
                 name,
                 email,
-                role
+                'Student ID': studentId,
+                'Shift Role': {
+                    orgs: [], // Add references to organizations here
+                    subgroup: [] // Add references to subgroups here
+                }
             });
             setName('');
             setEmail('');
+            setStudentId('');
             setRole('');
             alert('User added successfully!');
         } catch (error) {
@@ -52,6 +58,13 @@ function AddUserForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                required
+            />
+            <input
+                type="text"
+                value={studentId}
+                onChange={(e) => setStudentId(e.target.value)}
+                placeholder="Student ID"
                 required
             />
             <input

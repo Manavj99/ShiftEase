@@ -1,29 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Select from 'react-select'; 
-import { db } from '../services/firebase'; 
-import { collection, getDocs } from 'firebase/firestore'; 
 import './ShiftModal.css';
 
-const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, currentShiftData, userRole }) => {
+const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, currentShiftData, userRole, employees }) => {
     const [date, setDate] = useState(currentShiftData.date || '');
     const [startTime, setStartTime] = useState(currentShiftData.startTime || '');
     const [endTime, setEndTime] = useState(currentShiftData.endTime || '');
     const [assignedTo, setAssignedTo] = useState(currentShiftData.assignedTo || null);
-    const [employees, setEmployees] = useState([]); // State for employees
-
-    useEffect(() => {
-        const fetchEmployees = async () => {
-            const employeesSnapshot = await getDocs(collection(db, 'users'));
-            const employeeOptions = employeesSnapshot.docs.map(doc => ({
-                value: doc.id,
-                label: doc.data().name // Assuming each employee has a 'name' field
-            }));
-            setEmployees(employeeOptions);
-        };
-
-        fetchEmployees();
-    }, []);
 
     useEffect(() => {
         setDate(currentShiftData.date || '');
@@ -34,32 +18,15 @@ const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, curr
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const roleNormalized = userRole.trim().toLowerCase(); 
-        if (!shiftId && roleNormalized !== 'manager') {
-            alert("Unauthorized: Only managers can add shifts.");
-            return;
-        }
-    
         if (assignedTo) {
             handleSave({ date, startTime, endTime, assignedTo: assignedTo.value });
         } else {
             alert("Please select an employee.");
             return;
         }
-    
         handleClose();
     };
     
-    const handleDeleteClick = () => {
-        const roleNormalized = userRole.trim().toLowerCase();
-        if (!shiftId && roleNormalized !== 'manager') {
-            alert("Unauthorized: Only managers can delete shifts.");
-            return;
-        }
-        handleDelete(shiftId);
-        handleClose();
-    };
-
     return (
         <Modal show={show} onHide={handleClose} className="shift-modal" centered>
             <Modal.Header>
@@ -97,12 +64,13 @@ const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, curr
                             required
                         />
                     </Form.Group>
+
                     <Form.Group controlId="formAssignedTo">
                         <Form.Label>Assigned To</Form.Label>
                         <Select
                             options={employees}
                             value={assignedTo}
-                            onChange={(option) => setAssignedTo(option ? option : null)} // Handle null case
+                            onChange={option => setAssignedTo(option ? option : null)}
                             placeholder="Select an employee"
                             isSearchable
                             required
@@ -112,9 +80,15 @@ const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, curr
                         <Button variant="primary" type="submit">
                             Save Shift
                         </Button>
-                        <Button variant="danger" onClick={handleDeleteClick}>
-                            Delete Shift
-                        </Button>
+                        {shiftId && (
+                            <Button variant="danger" onClick={() => {
+                                if (window.confirm("Are you sure you want to delete this shift?")) {
+                                    handleDelete(shiftId);
+                                }
+                            }}>
+                                Delete Shift
+                            </Button>
+                        )}
                     </div>
                 </Form>
             </Modal.Body>
