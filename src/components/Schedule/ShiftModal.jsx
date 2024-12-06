@@ -19,7 +19,12 @@ const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, curr
     const handleSubmit = (e) => {
         e.preventDefault();
         if (assignedTo) {
-            handleSave({ date, startTime, endTime, assignedTo: assignedTo.value });
+            handleSave({ 
+                date, 
+                startTime, 
+                endTime, 
+                assignedTo: assignedTo.value 
+            });
         } else {
             alert("Please select an employee.");
             return;
@@ -47,23 +52,23 @@ const ShiftModal = ({ show, handleClose, handleSave, handleDelete, shiftId, curr
                         />
                     </Form.Group>
                     <Form.Group controlId="formStartTime">
-                        <Form.Label>Start Time</Form.Label>
-                        <Form.Control
-                            type="time"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="formEndTime">
-                        <Form.Label>End Time</Form.Label>
-                        <Form.Control
-                            type="time"
-                            value={endTime}
-                            onChange={(e) => setEndTime(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
+    <Form.Label>Start Time</Form.Label>
+    <Form.Control
+        type="time"
+        value={startTime}
+        onChange={(e) => setStartTime(e.target.value)}
+        required
+    />
+</Form.Group>
+<Form.Group controlId="formEndTime">
+    <Form.Label>End Time</Form.Label>
+    <Form.Control
+        type="time"
+        value={endTime}
+        onChange={(e) => setEndTime(e.target.value)}
+        required
+    />
+</Form.Group>
 
                     <Form.Group controlId="formAssignedTo">
                         <Form.Label>Assigned To</Form.Label>

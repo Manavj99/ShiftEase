@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getDocs, collection, doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { getDocs, collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import ShiftModal from './ShiftModal';
@@ -226,9 +226,11 @@ const Scheduler = () => {
                 return;
             }
     
-            const startDateTime = new Date(`${shiftData.date}T${shiftData.startTime}:00Z`);
-            const endDateTime = new Date(`${shiftData.date}T${shiftData.endTime}:00Z`);
-            const totalHours = (endDateTime - startDateTime) / 3600000;
+            // Convert local EST time to UTC for storage
+            
+            const startTime = new Date(`${shiftData.date}T${shiftData.startTime}`);
+            const endTime = new Date(`${shiftData.date}T${shiftData.endTime}`);
+            
     
             const shiftsCollectionRef = collection(db, 'shifts', orgDocSnap.id, 'ShiftsData');
             const shiftRef = shiftId ? doc(shiftsCollectionRef, shiftId) : doc(shiftsCollectionRef);
@@ -237,9 +239,9 @@ const Scheduler = () => {
                 subgroupName: subgroup,
                 assignedTo: assignedUserDocRef,
                 date: shiftData.date,
-                startTime: shiftData.startTime,
-                endTime: shiftData.endTime,
-                totalHours: totalHours.toString(),
+                startTime: startTime.toISOString().substring(11, 16), // Extract time part in "HH:mm" format
+                endTime: endTime.toISOString().substring(11, 16), // Extract time part in "HH:mm" format
+                totalHours: ((endTime - startTime) / 3600000).toString(),
                 orgs: orgRef,
                 subgroup: subgroup
             }, { merge: true });
