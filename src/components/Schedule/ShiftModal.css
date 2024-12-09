@@ -1,98 +1,240 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Modal Styles */
 .shift-modal .modal-dialog {
-    max-width: 500px; 
-    margin: auto; 
-    position: relative; 
-    z-index: 1050; 
+    max-width: 550px;
+    margin: 30px auto;
 }
 
 .shift-modal .modal-header {
-    background-color: #007bff; 
-    color: white; 
-}
-
-.shift-modal .modal-title {
-    font-weight: bold; 
-}
-
-.shift-modal .modal-body {
-    padding: 20px; 
-}
-
-.modal-buttons {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
     display: flex;
-    justify-content: space-between; 
-    margin-top: 20px; 
-}
-
-.modal-backdrop {
-    z-index: 1040; 
-}
-
-.shift-modal .modal {
-    transition: all 0.3s ease; 
-}
-
-.scheduler-container {
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.shift-modal .modal-header .close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
 }
 
-th, td {
+.shift-modal .modal-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.shift-modal .modal-body {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 0 0 10px 10px;
+}
+
+.shift-modal .form-group {
+    margin-bottom: 20px;
+}
+
+.shift-modal .form-control {
+    padding: 12px 15px;
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    width: 100%;
 }
 
-th {
+.shift-modal .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.shift-modal .form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.shift-modal .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.shift-modal .btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shift-modal .btn-primary {
     background-color: #007bff;
     color: white;
+    border: none;
 }
 
-button {
-    margin-top: 5px;
+.shift-modal .btn-primary:hover {
+    background-color: #0069d9;
 }
 
-.calendar {
-    width: 100%;
-    padding: 20px;
+.shift-modal .btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
 }
 
-.view-toggle {
-    margin: 20px 0;
+.shift-modal .btn-danger:hover {
+    background-color: #c0392b;
 }
 
-.view-toggle nav {
+/* Scheduler Styles */
+.scheduler-container {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.scheduler-container .week-navigation {
     display: flex;
-    justify-content: center;
+    
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.view-toggle ul {
+.scheduler-container .week-navigation > * {
+    margin: 0 10px; /* Adds space between the elements */
+}
+
+.scheduler-container .week-navigation button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.scheduler-container .week-navigation button:hover {
+    background-color: #0069d9;
+}
+
+.scheduler-container .view-toggle {
+    margin-bottom: 15px;
+}
+
+.scheduler-container .view-toggle ul {
+    display: flex;
     list-style: none;
     padding: 0;
-    display: flex;
 }
 
-.view-toggle li {
-    margin: 0 15px;
-    padding: 10px 20px;
+.scheduler-container .view-toggle ul li {
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
-.view-toggle li:hover {
-    background-color: #f0f0f0;
+.scheduler-container .view-toggle ul li.active {
+    color: #007bff;
 }
 
-.view-toggle li.active {
+.scheduler-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.scheduler-container table th,
+.scheduler-container table td {
+    padding: 18px 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+}
+
+.scheduler-container table th {
     background-color: #007bff;
     color: white;
-    border: 1px solid #007bff;
+    font-weight: bold;
+}
+
+.scheduler-container table td {
+    background-color: #ffffff;
+    color: #555;
+    transition: background-color 0.3s ease;
+}
+
+.scheduler-container table td button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.scheduler-container table td button:hover {
+    background-color: #0069d9;
+}
+
+.scheduler-container table td div {
+    cursor: pointer;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.scheduler-container table td div:hover {
+    color: #007bff;
+}
+
+.scheduler-container table td div span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .scheduler-container .week-navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scheduler-container table th, .scheduler-container table td {
+        padding: 12px;
+    }
+
+    .scheduler-container table td button {
+        padding: 6px 12px;
+    }
+
+    .shift-modal .form-control {
+        font-size: 14px;
+    }
+
+    .shift-modal .modal-buttons .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }

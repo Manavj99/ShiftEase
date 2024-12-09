@@ -7,6 +7,7 @@
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    overflow: hidden; /* Prevents any overflow */
 }
 
 .join-team-content {
@@ -14,8 +15,17 @@
     width: 100%;
     background: white;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: 10px; /* Slightly more rounded for modern look */
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left; /* Align content to the left */
+}
+
+h2 {
+    color: #18315B;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .email-input-section {
@@ -26,6 +36,7 @@
     color: #18315B;
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: 8px; /* Adds space between label and input */
 }
 
 .email-input-container {
@@ -39,6 +50,13 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+    outline: none; /* Removes the default blue outline on focus */
+    transition: border-color 0.3s ease-in-out;
+}
+
+.email-input:focus {
+    border-color: #2051E5; /* Adds a blue border on focus */
+    box-shadow: 0 0 5px rgba(32, 81, 229, 0.5); /* Soft blue glow */
 }
 
 .submit-button {
@@ -46,15 +64,36 @@
     height: 50px;
     background: #2051E5;
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
     margin-top: 20px;
+    box-sizing: border-box;
 }
 
 .submit-button:hover {
     background: #1A3D9A; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.submit-button:active {
+    background: #163C7D; /* Even darker shade on button press */
+    transform: translateY(0); /* Reset position on click */
+}
+
+@media (max-width: 768px) {
+    .join-team-content {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .submit-button {
+        font-size: 16px; /* Reduce font size on smaller screens */
+    }
+
+    .email-input {
+        font-size: 14px; /* Adjust input font size for smaller screens */
+    }
 }

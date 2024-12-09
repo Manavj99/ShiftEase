@@ -3,6 +3,8 @@ import { auth, db } from '../services/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import './CreateAccount.css';
+
 
 const CreateAccount = () => {
     const [firstName, setFirstName] = useState('');

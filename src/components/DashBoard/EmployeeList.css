@@ -1,0 +1,295 @@
+/* General Container */
+h4 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 20px;
+  
+}
+
+button {
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  display: block;
+  
+}
+
+button:hover {
+  background-color: #4338ca;
+}
+
+button:active {
+  background-color: #3730a3;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  font-weight: bold;
+}
+
+td {
+  font-size: 13px;
+}
+
+tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Empty State */
+td[colspan="6"] {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Add Employee Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.close {
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #4b5563;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* General Container */
+h4 {
+font-size: 24px;
+font-weight: bold;
+color: #374151;
+margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+background-color: #4f46e5; /* Vibrant Indigo */
+color: #ffffff;
+font-size: 14px;
+font-weight: bold;
+padding: 10px 20px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+margin-bottom: 20px;
+display: block;
+}
+
+/* Button Hover and Active States */
+button:hover {
+background-color: #4338ca; /* Slightly darker indigo */
+}
+
+button:active {
+background-color: #3730a3; /* Darker shade for active state */
+transform: scale(0.98); /* Subtle shrink effect */
+}
+
+/* Table Styles */
+table {
+width: 100%;
+border-collapse: collapse;
+background-color: #ffffff;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+overflow: hidden;
+}
+
+thead {
+background-color: #4f46e5;
+color: #ffffff;
+}
+
+th, td {
+text-align: left;
+padding: 12px 15px;
+font-size: 14px;
+color: #374151;
+border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+font-weight: bold;
+}
+
+td {
+font-size: 13px;
+}
+
+/* Row Hover Effect */
+tbody tr:hover {
+background-color: #f3f4f6;
+transition: background-color 0.2s ease;
+}
+
+tbody tr:last-child td {
+border-bottom: none;
+}
+
+/* Empty State Styling */
+td[colspan="6"] {
+text-align: center;
+color: #9ca3af;
+font-size: 14px;
+font-style: italic;
+padding: 20px 0;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+background-color: #ffffff;
+border-radius: 12px;
+width: 100%;
+max-width: 500px;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.close {
+float: right;
+font-size: 18px;
+font-weight: bold;
+color: #9ca3af;
+cursor: pointer;
+transition: color 0.2s ease;
+}
+
+.close:hover {
+color: #4b5563; /* Darker gray for hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+table {
+    font-size: 12px;
+}
+
+th, td {
+    padding: 8px 10px;
+}
+
+button {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.modal-content {
+    padding: 15px;
+}
+}
+
+/* Animations */
+@keyframes fadeIn {
+from {
+    opacity: 0;
+    transform: scale(0.9);
+}
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+}

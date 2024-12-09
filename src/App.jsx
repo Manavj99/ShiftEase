@@ -6,6 +6,7 @@ import AddUser from './components/AddUser/AddUser';
 import Scheduler from './components/Schedule/Scheduler';
 import Dashboard from './components/DashBoard/Dashboard';
 import Errror from './components/Errror';
+import Tasks from './components/Tasks/Tasks'; // Import the Tasks component
 import './App.css';
 import PostSignUpScreen from './components/Home/PostSignUpScreen';
 import CreateAccount from './components/Home/CreateAccount';
@@ -39,6 +40,7 @@ function App() {
             <Route path="/add-user" element={<AddUser />} />
             <Route path="/schedule" element={<Scheduler />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/tasks" element={<Tasks />} /> {/* New route for Tasks */}
             <Route path="*" element={<Errror />} />
           </Routes>
         </main>

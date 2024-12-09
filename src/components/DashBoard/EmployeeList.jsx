@@ -4,6 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import './Dashboard.css';
 import AddEmployeeModal from './AddEmployeeModal';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import './EmployeeList.css';
 
 const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);

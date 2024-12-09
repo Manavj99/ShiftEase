@@ -1,0 +1,123 @@
+/* Announcement Form Container */
+.announcement-form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+/* Announcement Form Heading */
+.announcement-form h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* Error and Success Messages */
+.error-message {
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    color: #2ecc71;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+/* Announcement Actions */
+.announcement-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.announcement-actions button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1rem;
+}
+
+.announcement-actions button:hover {
+    background-color: #0056b3;
+}
+
+/* Edit Announcement Form */
+.edit-announcement-form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-controls button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pagination-controls button:hover {
+    background-color: #0056b3;
+}
+
+.pagination-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #ccc;
+}

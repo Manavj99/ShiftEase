@@ -43,7 +43,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: white;
+  background: rgb(32, 42, 230);
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.10);
   border-radius: 5px;
   z-index: 1000;
@@ -85,4 +85,28 @@
   .hide_on_responsive {
       display: none;
   }
+}
+/* User Dropdown Button Style */
+.user-dropdown button {
+    background-color: transparent;  /* Transparent background */
+    color: white;  /* White text color */
+    font-size: 16px;  /* Font size */
+    padding: 10px 20px;  /* Padding around the text */
+    border: 1px solid #ffffff;  /* White border */
+    border-radius: 5px;  /* Rounded corners */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;  /* Smooth transitions */
+}
+
+/* Hover effect for the user dropdown button */
+.user-dropdown button:hover {
+    background-color: #3b37c8;  /* Background color on hover */
+    color: white;  /* Ensure text remains white on hover */
+    border-color: #3b37c8;  /* Change border color on hover */
+}
+
+/* Focus state for accessibility */
+.user-dropdown button:focus {
+    outline: none;  /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);  /* Subtle white shadow for focus */
 }

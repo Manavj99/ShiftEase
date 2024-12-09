@@ -56,7 +56,7 @@ const Navbar = () => {
             <nav className="navbar">
                 <div className="navbar-container">
                     <div className="logo">
-                        <strong>Shift Ease.</strong>
+                        <strong>Shift Ease</strong>
                     </div>
                     <div className="nav-links">
                         <NavLink to="/dashboard" className="nav-link">
@@ -68,9 +68,7 @@ const Navbar = () => {
                         <NavLink to="/tasks" className="nav-link">
                             <Button variant="text" color="default">TASKS</Button>
                         </NavLink>
-                        <NavLink to="/messages" className="nav-link">
-                            <Button variant="text" color="default">MESSAGES</Button>
-                        </NavLink>
+                        
                         <div className="user-dropdown">
                             <Button 
                                 variant="outlined" 

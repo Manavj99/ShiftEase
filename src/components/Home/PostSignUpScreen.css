@@ -1,3 +1,4 @@
+/* Main container */
 .post-signup-container {
     width: 100%;
     height: 100vh; /* Use viewport height for full screen */
@@ -10,12 +11,18 @@
     box-sizing: border-box; /* Ensure padding is included in width/height */
 }
 
+/* Content container */
 .post-signup-content {
     max-width: 625px; /* Set a max width for better responsiveness */
     width: 100%; /* Allow it to be responsive */
     position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+/* Welcome message styles */
 .welcome-message {
     margin-bottom: 20px; /* Add space below the welcome message */
 }
@@ -25,6 +32,7 @@
     font-size: 40px;
     font-family: 'SF Pro Display', sans-serif; /* Added fallback font */
     font-weight: 600;
+    text-align: left; /* Centered title */
     word-wrap: break-word;
 }
 
@@ -34,34 +42,96 @@
     font-family: 'SF Pro Display', sans-serif; /* Added fallback font */
     font-weight: 400;
     word-wrap: break-word;
+    text-align: left; /* Centered subtitle */
     margin-top: 15px;
 }
 
+/* Container for options */
 .option-container {
     width: 100%; /* Make it responsive */
     margin-top: 20px; /* Add some space between options */
 }
 
+/* Individual option box */
 .option-box {
     background: white;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
-    border-radius: 5px;
-    border: 1px #DCDCDC solid;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #DCDCDC;
     padding: 20px;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
 }
 
+/* Hover effect for option box */
+.option-box:hover {
+    background: #F0F4FF;
+    border-color: #2051E5;
+    box-shadow: 0px 8px 24px rgba(32, 81, 229, 0.2); /* Highlight shadow */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Arrow added to the right of the option box */
+.option-box::after {
+    
+    color: #2051E5;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on the arrow */
+.option-box:hover::after {
+    transform: translateX(5px); /* Move the arrow slightly to the right */
+}
+
+/* Option description styles */
 .option-description {
     color: #6C6C6C;
     font-size: 16px;
     font-family: 'SF Pro Display', sans-serif; /* Added fallback font */
     font-weight: 400;
     word-wrap: break-word;
+    margin-bottom: 5px;
 }
 
+/* Option title styles */
 .option-title {
     color: #353535;
     font-size: 20px;
     font-family: 'SF Pro Display', sans-serif; /* Added fallback font */
     font-weight: 600;
     word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 32px;
+    }
+
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+
+    .option-description {
+        font-size: 14px;
+    }
+
+    .option-title {
+        font-size: 18px;
+    }
+
+    .option-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .option-box::after {
+        font-size: 20px;
+        margin-top: 10px;
+    }
 }
