@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 const serviceAccount = require('./serviceAccountKey.json');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://shiftease-49cf2.firebaseio.com',
+  databaseURL: '',
 });
 
 // Middleware
