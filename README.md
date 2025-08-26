@@ -1,71 +1,183 @@
-# Getting Started with Create React App
+# ShiftEase — Web‑Based Employee Scheduling & Workforce Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20Analytics-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![Build with CRA](https://img.shields.io/badge/Build-Create%20React%20App-09D3AC?logo=create-react-app&logoColor=white)](https://create-react-app.dev/)
+[![License](https://img.shields.io/badge/License-Not%20Specified-lightgrey)](#license)
 
-## Available Scripts
+A full‑stack scheduling and employee management app built with **React** (Create React App) and **Firebase** (Auth, Firestore, Realtime Database, Analytics). The app supports **role‑based access**, **shift scheduling**, **task assignment**, and **announcements**, with a clean, responsive UI. Certain data flows can also be backed by a REST API (see `src/components/services/api.js`).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Authentication & Roles** — Firebase Auth with roles like Admin / Manager / Employee (see Firestore `users` collection).
+- **Shift Scheduling** — Create, edit, and delete shifts in Firestore (`shifts` collection and `ShiftsData` subcollection), with a modal scheduler UI.
+- **Task Management** — CRUD for tasks (Firestore `tasks` collection).
+- **Announcements** — Create & list org‑wide announcements (Firestore `announcements` collection).
+- **Dashboard** — Employee list, quick stats, and navigation components.
+- **Extensible Data Layer** — Optional REST calls via `API_BASE_URL` (see `src/components/services/api.js`), plus direct Firebase access via service modules.
+- **Responsive UI** — Built with React and common UI utilities; toast notifications, routing, and more.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧱 Tech Stack
 
-### `npm test`
+- **Frontend:** React 18 (Create React App), react-router, styled‑components, MUI Emotion, react‑toastify
+- **Data/Backend:** Firebase Auth, Firestore, Realtime Database, Analytics
+- **HTTP:** axios (optional REST integration via `api.js`)
+- **Tooling:** react‑scripts (`start`, `test`, `build`, `eject`)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 Project Structure (abridged)
 
-### `npm run build`
+```text
+ShiftEase-main/
+  • README.md, firebase.json, package.json
+  └─ public/
+     • index.html, manifest.json
+  └─ src/
+     • App.css, App.jsx, App.test.js, firebaseConfig.js, index.css, index.js, reportWebVitals.js, setupTests.js
+     └─ components/
+        └─ AddUser/
+           • AddRoleModal.jsx, AddUser.jsx, AddUserForm.jsx ...
+        └─ Announcement/
+           • AnnouncementForm.css, AnnouncementForm.jsx
+        └─ DashBoard/
+           • AddEmployeeModal.css, AddEmployeeModal.jsx, Dashboard.css ...
+        └─ Home/
+           • CreateAccount.css, CreateAccount.jsx, Home.js ...
+        └─ NavBar/
+           • Card1.css, Card1.js, Intermediate_Area_Part2.css ...
+        └─ Schedule/
+           • Scheduler.jsx, ShiftModal.css, ShiftModal.jsx
+        └─ Tasks/
+           • Tasks.jsx, tasks.css
+        └─ services/
+           • announcementService.js, api.js, firebase.js ...
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started (Local)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1) Prerequisites
+- **Node.js** 18+ (LTS recommended)
+- **npm** 9+
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2) Install dependencies
+```bash
+npm install
+```
 
-### `npm run eject`
+### 3) Configure Firebase
+Update **`src/components/services/firebase.js`** with your Firebase project config:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+// src/components/services/firebase.js
+import {{ initializeApp }} from 'firebase/app';
+import {{ getAuth }} from 'firebase/auth';
+import {{ getFirestore }} from 'firebase/firestore';
+import {{ getDatabase }} from 'firebase/database';
+import {{ getAnalytics }} from 'firebase/analytics';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const firebaseConfig = {{
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID"
+}};
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const realtimeDb = getDatabase(app);
+export const analytics = getAnalytics(app);
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> Tip: Many teams use environment variables with Create React App (prefix with `REACT_APP_`) and read them here instead of hard‑coding.
 
-## Learn More
+### 4) (Optional) Configure REST API base
+`src/components/services/api.js` points to:
+```
+http://cassini.cs.kent.edu/shiftease/api
+```
+If you don’t have access to that backend, replace `API_BASE_URL` with your own, or refactor calls to rely purely on Firebase.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 5) Run the app
+```bash
+npm start
+```
+Open http://localhost:3000 in your browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 6) Run tests
+```bash
+npm test
+```
 
-### Code Splitting
+### 7) Build for production
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔐 Roles & Access
 
-### Analyzing the Bundle Size
+- **Auth:** Firebase Authentication (email/password out of the box)
+- **Authorization:** Role read from Firestore `users/{{uid}}` document (`role` field); used by `shiftService.js` helpers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> Ensure your Firestore rules align with role expectations (e.g., Admins can create shifts, Employees can view their own tasks).
 
-### Making a Progressive Web App
+## 🗄️ Data Model (Firestore)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `users/{{uid}}` → `role`, profile fields
+- `shifts/{{orgId}}/ShiftsData/{{shiftId}}` → shift details (`date`, `startTime`, `endTime`, `totalHours`, `orgs`, `subgroup`)
+- `tasks/{{taskId}}` → task details + timestamps
+- `announcements/{{id}}` → message, author, createdAt
 
-### Advanced Configuration
+> Adjust names if your collections differ; this mapping was inferred from the service modules.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🧭 Key Screens & Components
 
-### Deployment
+- **Authentication:** `Home/CreateAccount.jsx`, `Home/Login.jsx`, `Home/VerificationPage.jsx`
+- **Scheduling:** `Schedule/Scheduler.jsx`, `Schedule/ShiftModal.jsx`
+- **Tasks:** `Tasks/Tasks.jsx`
+- **Announcements:** `Announcement/AnnouncementForm.jsx`
+- **Users & Dashboard:** `DashBoard/Dashboard.jsx`, `DashBoard/EmployeeList.jsx`
+- **Shell & Nav:** `NavBar/*`, `App.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🧪 Testing
 
-### `npm run build` fails to minify
+The project uses Create React App’s testing setup (`react-scripts test`). Add tests under `src/` and name them `*.test.js` to be detected.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# ShiftEase" 
+## 🧭 Roadmap Ideas
+
+- ✅ Migrate Firebase config to environment variables (`REACT_APP_*`) and add `.env.example`
+- ✅ Role‑based routing guards
+- ⬜ CI (GitHub Actions) for lint/test/build
+- ⬜ E2E tests (Playwright/Cypress)
+- ⬜ Dark mode & accessibility pass (ARIA, keyboard nav)
+- ⬜ Deployment guides (Firebase Hosting / Vercel / Netlify)
+
+## 🛡️ Security Notes (Important)
+
+- **Never commit private keys:** The repo includes a `serviceAccountKey.json` under `src/components/services/`. Remove it from source control immediately and rotate the associated credentials. Commit only **public** client configs; admin keys must stay server‑side.
+- Configure **Firestore & Realtime Database rules** to restrict access by role.
+- Do not expose secrets in `firebase.js`; prefer environment variables and secure build configs.
+
+## 📦 Deployment
+
+- **Firebase Hosting:** Build (`npm run build`) and deploy with Firebase CLI (`firebase init hosting && firebase deploy`).
+- **Vercel / Netlify:** Use the CRA build output; set environment variables in project settings.
+
+## 🤝 Contributing
+
+PRs welcome! If you’d like to add features (e.g., approval workflow for shifts), open an issue first to discuss scope.
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feat/your-feature`
+3. Commit: `git commit -m "feat: add your feature"`
+4. Push and open a PR
+
+## 📄 License
+
+**No license specified.** If you intend to open‑source, choose a license (MIT/Apache‑2.0/etc.) and add a `LICENSE` file. See [choosealicense.com](https://choosealicense.com/).
+
+---
