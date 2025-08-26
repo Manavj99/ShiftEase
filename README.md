@@ -1,4 +1,10 @@
-# ShiftEase — Web‑Based Employee Scheduling & Workforce Management
+# ShiftEase — Web-Based Employee Scheduling & Workforce Management
+
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20Analytics-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![Build with CRA](https://img.shields.io/badge/Build-Create%20React%20App-09D3AC?logo=create-react-app&logoColor=white)](https://create-react-app.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/Manavj99/ShiftEase/actions/workflows/ci.yml/badge.svg)](https://github.com/Manavj99/ShiftEase/actions/workflows/ci.yml)
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20Analytics-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
@@ -19,12 +25,77 @@ A full‑stack scheduling and employee management app built with **React** (Crea
 - **Extensible Data Layer** — Optional REST calls via `API_BASE_URL` (see `src/components/services/api.js`), plus direct Firebase access via service modules.
 - **Responsive UI** — Built with React and common UI utilities; toast notifications, routing, and more.
 
+
 ## 🧱 Tech Stack
 
-- **Frontend:** React 18 (Create React App), react-router, styled‑components, MUI Emotion, react‑toastify
-- **Data/Backend:** Firebase Auth, Firestore, Realtime Database, Analytics
-- **HTTP:** axios (optional REST integration via `api.js`)
-- **Tooling:** react‑scripts (`start`, `test`, `build`, `eject`)
+**Core**  
+- React 18, Create React App (react-scripts), React Router DOM
+
+**Firebase**  
+- firebase (Auth, Firestore, Realtime DB, Analytics)
+
+**UI & Styling**  
+- MUI (@mui/material), Emotion (@emotion/react, @emotion/styled)  
+- styled-components  
+- Bootstrap, React-Bootstrap  
+- Font Awesome (@fortawesome/react-fontawesome, free-solid-svg-icons)
+
+**Scheduling & UX**  
+- react-big-calendar, moment  
+- react-select, react-toastify
+
+**Data & HTTP**  
+- axios
+
+**Build & Assets**  
+- svgo, postcss, web-vitals
+
+**Testing**  
+- @testing-library/react, @testing-library/jest-dom, @testing-library/user-event
+
+**(Server-Side Only — consider moving out of client)**  
+- express, cors, cookie, firebase-admin
+
+
+<details>
+<summary><strong>Full dependency list (from package.json)</strong></summary>
+
+**dependencies**
+- `@emotion/react`: `^11.13.3`
+- `@emotion/styled`: `^11.13.0`
+- `@fortawesome/free-solid-svg-icons`: `^6.6.0`
+- `@fortawesome/react-fontawesome`: `^0.2.2`
+- `@mui/material`: `^6.1.4`
+- `@testing-library/jest-dom`: `^5.17.0`
+- `@testing-library/react`: `^13.4.0`
+- `@testing-library/user-event`: `^13.5.0`
+- `axios`: `^1.7.9`
+- `bootstrap`: `^5.3.3`
+- `cookie`: `^0.7.2`
+- `cors`: `^2.8.5`
+- `express`: `^2.5.11`
+- `firebase`: `^10.14.1`
+- `firebase-admin`: `^12.7.0`
+- `moment`: `^2.30.1`
+- `nth-check`: `^2.1.1`
+- `postcss`: `^8.4.47`
+- `react`: `^18.3.1`
+- `react-big-calendar`: `^1.15.0`
+- `react-bootstrap`: `^2.10.6`
+- `react-dom`: `^18.3.1`
+- `react-router-dom`: `^6.27.0`
+- `react-scripts`: `5.0.1`
+- `react-select`: `^5.8.3`
+- `react-toastify`: `^10.0.6`
+- `styled-components`: `^6.1.13`
+- `svgo`: `^3.3.2`
+- `web-vitals`: `^2.1.4`
+
+**devDependencies**
+_(none)_
+
+</details>
+
 
 ## 📁 Project Structure (abridged)
 
@@ -151,7 +222,7 @@ The project uses Create React App’s testing setup (`react-scripts test`). Add 
 
 - ✅ Migrate Firebase config to environment variables (`REACT_APP_*`) and add `.env.example`
 - ✅ Role‑based routing guards
-- ⬜ CI (GitHub Actions) for lint/test/build
+- ✅CI (GitHub Actions) for lint/test/build
 - ⬜ E2E tests (Playwright/Cypress)
 - ⬜ Dark mode & accessibility pass (ARIA, keyboard nav)
 - ⬜ Deployment guides (Firebase Hosting / Vercel / Netlify)
@@ -162,22 +233,25 @@ The project uses Create React App’s testing setup (`react-scripts test`). Add 
 - Configure **Firestore & Realtime Database rules** to restrict access by role.
 - Do not expose secrets in `firebase.js`; prefer environment variables and secure build configs.
 
+## 🧩 Optional Backend (server/)
+
+This repo now ships with a minimal **Express + Firebase Admin** backend skeleton in `server/` for endpoints that require privileged access (e.g., server-side validation, admin operations).
+
+- Configure `FIREBASE_SERVICE_ACCOUNT_B64` (base64 of your service account JSON) before starting.
+- Client can talk to it via `REACT_APP_API_BASE_URL`.
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
 ## 📦 Deployment
 
 - **Firebase Hosting:** Build (`npm run build`) and deploy with Firebase CLI (`firebase init hosting && firebase deploy`).
 - **Vercel / Netlify:** Use the CRA build output; set environment variables in project settings.
 
-## 🤝 Contributing
-
-PRs welcome! If you’d like to add features (e.g., approval workflow for shifts), open an issue first to discuss scope.
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Commit: `git commit -m "feat: add your feature"`
-4. Push and open a PR
 
 ## 📄 License
 
-**No license specified.** If you intend to open‑source, choose a license (MIT/Apache‑2.0/etc.) and add a `LICENSE` file. See [choosealicense.com](https://choosealicense.com/).
-
----
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
