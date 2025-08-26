@@ -1,0 +1,133 @@
+/* Dashboard.css */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9fafb;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .card-item {
+    background: linear-gradient(135deg, #e0e7ff, #f3f4f6);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-item.active {
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-item .icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #4f46e5;
+    transition: color 0.3s ease;
+  }
+  
+  .card-item.active .icon {
+    color: #ffffff;
+  }
+  
+  .card-item span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #374151;
+    transition: color 0.3s ease;
+  }
+  
+  .card-item.active span {
+    color: #ffffff;
+  }
+  
+  .shift-status {
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #9ca3af;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .notification-panel {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .panel-header {
+    display: flex;
+    
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    gap: 20px;
+  }
+  
+  .panel-header .active-tab {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4f46e5;
+    border-bottom: 3px solid #4f46e5;
+    padding-bottom: 5px;
+  }
+  
+  .panel-header .inactive-tab {
+    font-size: 14px;
+    font-weight: bold;
+    color: #9ca3af;
+    cursor: pointer;
+    padding-bottom: 5px;
+  }
+  
+  
+  
+  .welcome-message {
+   
+    font-size: 18px;
+    font-weight: bold;
+    color: #374151;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .card-item {
+      padding: 15px;
+    }
+  
+    .icon {
+      font-size: 24px;
+    }
+  
+    .card-item span {
+      font-size: 12px;
+    }
+  }
+  

@@ -1,56 +1,85 @@
 import React, { useState } from 'react';
 import { db } from '../services/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 
 function AddUserForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [position, setPosition] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [studentId, setStudentId] = useState('');
+    const [role, setRole] = useState('');
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await addDoc(collection(db, 'users'), {
-        name,
-        email,
-        position
-      });
-      setName('');
-      setEmail('');
-      setPosition('');
-      alert('User added successfully!');
-    } catch (error) {
-      console.error("Error adding user: ", error);
-      alert('Error adding user. Please try again.');
-    }
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!name || !email || !role || !studentId) {
+            setError("All fields are required.");
+            return;
+        }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-        required
-      />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="text"
-        value={position}
-        onChange={(e) => setPosition(e.target.value)}
-        placeholder="Position"
-        required
-      />
-      <button type="submit">Add User</button>
-    </form>
-  );
+        setLoading(true);
+        setError(null);
+
+        try {
+            const userId = name.trim().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+            await setDoc(doc(db, 'users', userId), {
+                name,
+                email,
+                'Student ID': studentId,
+                'Shift Role': {
+                    orgs: [], // Add references to organizations here
+                    subgroup: [] // Add references to subgroups here
+                }
+            });
+            setName('');
+            setEmail('');
+            setStudentId('');
+            setRole('');
+            alert('User added successfully!');
+        } catch (error) {
+            console.error("Error adding user: ", error);
+            setError('Error adding user. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Name"
+                required
+            />
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+            />
+            <input
+                type="text"
+                value={studentId}
+                onChange={(e) => setStudentId(e.target.value)}
+                placeholder="Student ID"
+                required
+            />
+            <input
+                type="text"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                placeholder="Role"
+                required
+            />
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <button type="submit" disabled={loading}>
+                {loading ? 'Adding...' : 'Add User'}
+            </button>
+        </form>
+    );
 }
 
 export default AddUserForm;

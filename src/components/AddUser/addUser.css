@@ -1,50 +1,121 @@
-.add-user-container {
+/* Modal Styles for Add Employee */
+.add-user-modal .modal-dialog {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.add-user-modal .modal-header {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
   display: flex;
-  justify-content: center;
-  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
-.add-user-modal .modal-content,
-.add-position-modal .modal-content {
+
+.add-user-modal .modal-header .close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.add-user-modal .modal-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.add-user-modal .modal-body {
+  padding: 20px;
   background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.add-user-modal .modal-header,
-.add-position-modal .modal-header {
-  border-bottom: none;
+/* Add Employee Form */
+.add-employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.add-user-modal .modal-footer,
-.add-position-modal .modal-footer {
-  border-top: none;
+.add-employee-form input,
+.add-employee-form select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #f9f9f9;
 }
 
-.add-user-modal .close,
-.add-position-modal .close {
-  color: #666;
-  font-size: 24px;
-  font-weight: bold;
-  transition: color 0.2s ease;
+.add-employee-form button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.add-user-modal .close:hover,
-.add-position-modal .close:hover {
-  color: #000;
+.add-employee-form button:hover {
+  background-color: #0069d9;
 }
 
+/* Animation for Modal */
 @keyframes modalFadeIn {
   from {
-    opacity: 0;
-    transform: translateY(-20px);
+      opacity: 0;
+      transform: translateY(-20px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
   }
 }
 
-.add-user-modal .modal-content,
-.add-position-modal .modal-content {
+.add-user-modal .modal-content {
   animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Buttons & Footer */
+.add-user-modal .modal-footer {
+  border-top: none;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-user-modal .btn-close {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-user-modal .btn-close:hover {
+  background-color: #c0392b;
+}
+
+.add-user-modal .btn-save {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-user-modal .btn-save:hover {
+  background-color: #0069d9;
 }

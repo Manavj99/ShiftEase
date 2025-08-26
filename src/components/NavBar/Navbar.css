@@ -1,89 +1,112 @@
-/* Navbar.css */
-
 .TopArea {
-  background-color: #fafafa; /* Light background for the navbar */
-  padding: 3%; /* Padding around the navbar */
+  background-color: #2051E5;
+  padding: 1.5%;
 }
 
 .navbar-container {
   display: flex;
-  justify-content: space-between; /* Space between logo and links */
-  align-items: center; /* Center items vertically */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  margin-left: 2vw; /* Space on the left */
-  font-size: 1.8rem; /* Logo font size */
-  font-weight: bold; /* Bold logo */
+  margin-left: 2vw;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
 }
 
 .nav-links {
-  display: flex; /* Flexbox for nav links */
-  align-items: center; /* Center items vertically */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-link {
-  text-decoration: none; /* Remove underline */
-  color: black; /* Default text color */
-  transition: color 0.2s, transform 0.2s; /* Smooth transitions */
-  margin-right: 2vw; /* Space between links */
-  font-weight: bold; /* Bold text */
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s, transform 0.2s;
+  margin-right: 2vw;
+  font-weight: bold;
 }
 
 .nav-link:hover {
-  color: rgb(73, 71, 71); /* Change color on hover */
-  transform: scale(1.02); /* Slightly enlarge on hover */
+  color: #d83838;
+  transform: scale(1.02);
 }
 
-.underLine2 {
-  color: rgb(112, 108, 108); /* Default color */
-  display: inline-block; /* Inline block for underline effect */
-  position: relative; /* Position for the pseudo-element */
+.user-dropdown {
+  position: relative;
 }
 
-.underLine2:after {
-  content: "";
-  position: absolute; /* Positioning for the underline */
-  width: 100%; /* Full width */
-  transform: scaleX(0); /* Start hidden */
-  height: 2px; /* Height of the underline */
-  bottom: 0; /* Position at the bottom */
-  left: 0; /* Align to the left */
-  background-color: #d83838; /* Underline color */
-  transform-origin: bottom right; /* Origin for scaling */
-  transition: transform 0.25s ease-in-out; /* Smooth transition */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgb(32, 42, 230);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
+  z-index: 1000;
 }
 
-.underLine2:hover:after {
-  transform: scaleX(0.9); /* Show underline on hover */
-  transform-origin: bottom left; /* Change origin for scaling */
+.dropdown-menu Button {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+
+.dropdown-menu Button:hover {
+  background: #f0f0f0;
 }
 
 @media only screen and (max-width: 768px) {
   .navbar-container {
-      flex-direction: column; /* Stack items vertically */
-      align-items: flex-start; /* Align items to the start */
+      flex-direction: column;
+      align-items: flex-start;
   }
 
   .nav-links {
-      margin-top: 1rem; /* Space above links */
-      width: 100%; /* Full width for links */
-      justify-content: space-between; /* Space between links */
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: space-between;
   }
 
   .nav-link {
-      margin-right: 0; /* Remove right margin */
-      margin-bottom: 0.5rem; /* Space below links */
+      margin-right: 0;
+      margin-bottom: 0.5rem;
   }
 
   .hide_on_responsive {
-      display: none; /* Hide on smaller screens */
+      display: none;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .hide_on_responsive {
-      display: none; /* Hide on very small screens */
+      display: none;
   }
+}
+/* User Dropdown Button Style */
+.user-dropdown button {
+    background-color: transparent;  /* Transparent background */
+    color: white;  /* White text color */
+    font-size: 16px;  /* Font size */
+    padding: 10px 20px;  /* Padding around the text */
+    border: 1px solid #ffffff;  /* White border */
+    border-radius: 5px;  /* Rounded corners */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;  /* Smooth transitions */
+}
+
+/* Hover effect for the user dropdown button */
+.user-dropdown button:hover {
+    background-color: #3b37c8;  /* Background color on hover */
+    color: white;  /* Ensure text remains white on hover */
+    border-color: #3b37c8;  /* Change border color on hover */
+}
+
+/* Focus state for accessibility */
+.user-dropdown button:focus {
+    outline: none;  /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);  /* Subtle white shadow for focus */
 }
