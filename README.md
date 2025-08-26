@@ -4,7 +4,7 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20Analytics-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![Build with CRA](https://img.shields.io/badge/Build-Create%20React%20App-09D3AC?logo=create-react-app&logoColor=white)](https://create-react-app.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![CI](https://github.com/Manavj99/ShiftEase/actions/workflows/ci.yml/badge.svg)](https://github.com/Manavj99/ShiftEase/actions/workflows/ci.yml)
+
 
 A full‑stack scheduling and employee management app built with **React** (Create React App) and **Firebase** (Auth, Firestore, Realtime Database, Analytics). The app supports **role‑based access**, **shift scheduling**, **task assignment**, and **announcements**, with a clean, responsive UI. Certain data flows can also be backed by a REST API (see `src/components/services/api.js`).
 
